@@ -1,5 +1,8 @@
 import React, { useRef} from 'react'
 
+//import apiCalls
+import { fetchHeroes } from '../api/apiCalls'
+
 export default function SearchBar({ setter }) {
     let input = useRef('') //not a controlled component, update later
   
