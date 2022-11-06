@@ -7,6 +7,7 @@ export default function SearchBar({ setter }) {
     let input = useRef('') 
   
     const handleClick = async (e) => {
+        e.preventDefault()
         let value = input.current.value
         if (value === '') return
 
@@ -19,7 +20,7 @@ export default function SearchBar({ setter }) {
     }
     return (
     <form>
-        <input type="text" placeholder="Search Here" ref={input}/>
+        <input type="text" placeholder="Search Hero" ref={input}/>
         <button onClick={handleClick}>Search</button>
     </form>
   )
