@@ -1,10 +1,10 @@
-import { MD5 } from "crypto-js";
+import MD5 from "crypto-js/md5";
+
+const API_URL = process.env.REACT_APP_BASE_URL;
 
 const getHash = (ts, secretKey, publicKey) => {
     return MD5(ts + secretKey + publicKey).toString()
 }
-
-const API_URL = process.env.REACT_APP_BASE_URL;
 
 const fetchHeroes = async (value) => {
     let baseURL = `${API_URL}/v1/public/characters`
@@ -13,17 +13,17 @@ const fetchHeroes = async (value) => {
     let privateKey = process.env.REACT_APP_PRIVATE_KEY
     let hash = getHash(ts, privateKey, apiKey)
     
-    let url = `${baseURL}?ts=${ts}&apikey=${apiKey}$hash=${hash}&nameStartsWith=${value}`
+    let url = `${baseURL}?ts=${ts}&apikey=${apiKey}&hash=${hash}&nameStartsWith=${value}`
 
     try {
         let response = await fetch(url)
-        console.log(data)
         let data = await response.json()
+        console.log('test', data)
         return data
     } catch (error) {
         console.error(error)
         return
     }
-}
+};
 
-export {fetchHeroes}
+export { fetchHeroes }

@@ -4,7 +4,7 @@ import React, { useRef} from 'react'
 import { fetchHeroes } from '../api/apiCalls'
 
 export default function SearchBar({ setter }) {
-    let input = useRef('') //not a controlled component, update later
+    let input = useRef('') 
   
     const handleClick = async (e) => {
         let value = input.current.value
